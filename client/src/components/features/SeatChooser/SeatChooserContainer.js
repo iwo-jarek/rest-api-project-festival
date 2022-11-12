@@ -3,6 +3,7 @@ import {
   getSeats,
   getRequests,
   loadSeatsRequest,
+  addSeatRequest,
 } from "../../../redux/seatsRedux";
 import SeatChooser from "./SeatChooser";
 
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  addSeat: (seat) => dispatch(addSeatRequest(seat)),
   loadSeats: () => dispatch(loadSeatsRequest()),
 });
 
