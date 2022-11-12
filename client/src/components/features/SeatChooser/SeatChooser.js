@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Progress, Alert } from "reactstrap";
+import { loadSeats } from "../../../redux/seatsRedux";
 
 import "./SeatChooser.scss";
 
@@ -8,6 +9,10 @@ class SeatChooser extends React.Component {
     const { loadSeats } = this.props;
     loadSeats();
     this.interval = setInterval(() => loadSeats(), 20000);
+  }
+  stopInterval() {
+    clearInterval(this.interval);
+    loadSeats();
   }
   componentWillUnmount() {
     clearInterval(this.interval);
@@ -42,7 +47,7 @@ class SeatChooser extends React.Component {
           color="primary"
           className="seats__seat"
           outline
-          onClick={(e) => updateSeat(e, seatId)}
+          onClick={() => updateSeat(seatId)}
         >
           {seatId}
         </Button>
